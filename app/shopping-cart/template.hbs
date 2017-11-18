@@ -1,0 +1,10 @@
+<h2>Shopping cart</h2>
+
+<ul>
+  {{#each shoppingCart.goods as |good|}}
+    <li>
+      {{good.name}} - ${{good.price}} -
+      <button class="btn btn-danger" {{action 'removeGood' good}}>Remove</button>
+    </li>
+  {{/each}}
+</ul>

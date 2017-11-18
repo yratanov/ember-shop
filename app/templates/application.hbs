@@ -1,5 +1,11 @@
-{{!-- The following component displays Ember's default welcome message. --}}
-{{welcome-page}}
-{{!-- Feel free to remove this! --}}
-
-{{outlet}}
+<div class="container">
+  <div class="pull-right">
+    {{#link-to 'shopping-cart'}}
+      {{shoppingCart.goods.length}} item(s) in your cart
+    {{/link-to}}
+  </div>
+  <h2>
+    {{link-to 'Goods' 'goods.index'}}
+  </h2>
+  {{outlet}}
+</div>

@@ -1,0 +1,26 @@
+<form {{action save on='submit'}}>
+  <div class="form-group">
+    <label class="control-label">Price</label>
+    <div class="input-group">
+      <div class="input-group-addon">$</div>
+      <input type="number" class="form-control"
+             value="{{model.price}}"
+             oninput={{action (mut model.price) value='target.value'}}>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label class="control-label">Name</label>
+    <input type="text" class="form-control"
+           value="{{model.name}}"
+           oninput={{action (mut model.name) value='target.value'}}>
+  </div>
+
+  <div class="form-group">
+    <label class="control-label">Description</label>
+    <textarea cols="30" rows="10" class="form-control"
+              oninput={{action (mut model.description) value='target.value'}}>{{model.description}}</textarea>
+  </div>
+
+  <input type="submit" value={{if model.isNew 'Create good' 'Update good'}} class="btn btn-primary">
+</form>

@@ -1,0 +1,14 @@
+{{link-to 'Add new good' 'goods.new' class='btn btn-success'}}
+
+{{#each model as |good|}}
+  <h3>
+    {{good.name}} - ${{good.price}}
+    {{#link-to 'goods.edit' good}}
+      <i class="glyphicon glyphicon-pencil"></i>
+    {{/link-to}}
+  </h3>
+  <p>{{good.description}}</p>
+  <button class="btn btn-primary" {{action 'addToCart' good}}>
+    Add to cart
+  </button>
+{{/each}}
