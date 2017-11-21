@@ -4,6 +4,7 @@
 module.exports = function(environment) {
   let ENV = {
     modulePrefix: 'shop',
+    podModulePrefix: 'shop/pods',
     environment,
     rootURL: '/',
     locationType: 'auto',
