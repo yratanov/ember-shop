@@ -1,18 +1,22 @@
 {{link-to 'Add new good' 'goods.new' class='btn btn-success'}}
 
+<div class="row">
+  <div class="col-md-6">
+    <input type="text" class="form-control"
+           value="{{search}}"
+           oninput={{action (mut _search) value='target.value'}}>
+  </div>
+  <div class="col-md-3">
+    <button class="btn btn-default" {{action (mut search) _search}}>Search</button>
+  </div>
+</div>
+
 {{#each model as |good|}}
-  <h3>
-    {{good.name}} - ${{good.price}}
-    {{#link-to 'goods.edit' good}}
-      <i class="glyphicon glyphicon-pencil"></i>
-    {{/link-to}}
-    <button class="btn btn-danger" {{action 'deleteGood' good}}>
-      <span class="glyphicon glyphicon-trash"></span>
-      Delete
-    </button>
-  </h3>
-  <p>{{good.description}}</p>
-  <button class="btn btn-primary" {{action 'addToCart' good}}>
-    Add to cart
-  </button>
+  {{good-line good=good selectedIds=selectedIds}}
 {{/each}}
+
+{{#if selectedIds}}
+  <button class="btn btn-danger" {{action 'deleteSelected'}}>
+    Delete selected
+  </button>
+{{/if}}

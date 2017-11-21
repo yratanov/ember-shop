@@ -1,20 +1,18 @@
 import Controller from '@ember/controller';
-import { inject as service } from '@ember/service';
 
 export default Controller.extend({
-  shoppingCart: service(),
+  queryParams: ['search', 'selectedIds'],
+
+  search: '',
+  selectedIds: [],
 
   actions: {
-    addToCart(good) {
-      this.get('shoppingCart').add(good);
-    },
-
-    deleteGood(good) {
-      if (confirm('Are you sure?')) {
+    deleteSelected() {
+      this.get('selectedIds').forEach(id => {
+        let good = this.store.peekRecord('good', id);
         good.destroyRecord();
-        this.transitionToRoute('goods.index');
-      }
+      });
+      this.set('selectedIds', []);
     }
   }
 });
-

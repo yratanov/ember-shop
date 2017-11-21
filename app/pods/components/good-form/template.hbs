@@ -1,12 +1,11 @@
 <form {{action save on='submit'}}>
   <div class="form-group">
     <label class="control-label">Price</label>
-    <div class="input-group">
-      <div class="input-group-addon">$</div>
-      <input type="number" class="form-control"
-             value="{{model.price}}"
-             oninput={{action (mut model.price) value='target.value'}}>
-    </div>
+    <input type="text" class="form-control"
+           value="{{if doNotFormatPrice model.price (format-money model.price symbol='$' format="%s%v")}}"
+           onfocus={{action (mut doNotFormatPrice) true}}
+           onblur={{action (mut doNotFormatPrice) false}}
+           onchange={{action (mut model.price) value='target.value'}}>
   </div>
 
   <div class="form-group">
