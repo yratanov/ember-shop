@@ -6,6 +6,10 @@
     {{#link-to 'goods.edit' good}}
       <i class="glyphicon glyphicon-pencil"></i>
     {{/link-to}}
+    <button class="btn btn-danger" {{action 'deleteGood' good.id}}>
+      <span class="glyphicon glyphicon-trash"></span>
+      Delete
+    </button>
   </h3>
   <p>{{good.description}}</p>
   <button class="btn btn-primary" {{action 'addToCart' good}}>
